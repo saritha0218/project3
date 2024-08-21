@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+   
+  body {
+    background: white;
+    overflow: auto;
+  }
+   
+  h1{
+     text-align: center;
+     margin: 3%;
+     font-size: 3rem;
+     text-decoration: underline;
+  }
+  
+  form{
+      margin-left:30%;
+  }
+
+#input, #btn{
+     height:50px;
+     border:3px solid black;
+     border-radius:8px;
+     font-size:1rem;
+}
+
+#input{
+  text-align:center;
+}
+
+  ul {
+    text-align: left;
+    color:blue;
+    padding: 5%;
+    font-size: 2rem;
+    list-style: circle;
+  }
+   
