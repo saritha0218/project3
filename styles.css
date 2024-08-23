@@ -34,8 +34,13 @@
   ul {
     text-align: left;
     color:blue;
-    padding: 5%;
     font-size: 2rem;
-    list-style: circle;
+    list-style: disc;
+    margin: 50px 80px;
   }
-   
+
+  li{
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: black;
+  }
