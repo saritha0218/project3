@@ -10,19 +10,21 @@ function add_item() {
     let editButton = document.createElement("button");
         editButton.textContent = "Edit";
         make_li.appendChild(editButton);
-        editButton.style.margin="0px 50px";
+        editButton.style.margin="0px 55px";
         editButton.style.padding="10px";
         editButton.style.borderRadius="8px"; 
-        editButton.style.backgroundColor="yellow";
+        editButton.style.backgroundColor="rgb(214, 136, 154)";
         editButton.style.fontWeight="bold";
+        editButton.style.fontSize="18px";
 
     let deleteButton = document.createElement("button");
         deleteButton.textContent = "X";
         make_li.appendChild(deleteButton);
-        deleteButton.style.padding="10px";
-        deleteButton.style.borderRadius="50%";
+        deleteButton.style.padding="10px 20px";
+        deleteButton.style.borderRadius="8px";
         deleteButton.style.backgroundColor="red";
         deleteButton.style.fontWeight="bold";
+        deleteButton.style.fontSize="18px";
 
      add.appendChild(make_li); 
      item.value = "" 

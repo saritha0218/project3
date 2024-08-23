@@ -3,10 +3,16 @@
     margin: 0;
     box-sizing: border-box;
   }
-   
+   html{
+    height: 100%;
+   }
   body {
-    background: white;
-    overflow: auto;
+    height: 100%;
+    background-image:url(http://getwallpapers.com/wallpaper/full/8/f/f/628923.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-position: center;
   }
    
   h1{
@@ -25,6 +31,15 @@
      border:3px solid black;
      border-radius:8px;
      font-size:1rem;
+     
+}
+
+#btn:hover{
+  background-color: aquamarine;
+}
+
+#input:hover{
+  background-color: aquamarine;
 }
 
 #input{
@@ -33,14 +48,15 @@
 
   ul {
     text-align: left;
-    color:blue;
+    color:black;
     font-size: 2rem;
-    list-style: disc;
+    list-style: none;
     margin: 50px 80px;
   }
 
   li{
     margin-bottom: 10px;
     padding: 10px 20px;
-    background-color: black;
+    border: 3px solid black;
+    border-radius: 30px;
   }
