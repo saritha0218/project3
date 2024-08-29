@@ -60,3 +60,20 @@
     border: 3px solid black;
     border-radius: 30px;
   }
+
+  .bt{
+    margin: 0px 55px ;
+    padding: 10px ;
+    border-radius: 8px ; 
+    background-color:rgb(214, 136, 154);
+    font-weight: bold ;
+    font-size: 18px ;
+  }
+
+  .bt1{
+    background-color: red;
+    padding: 10px 20px ;
+    border-Radius: 8px ;
+    font-weight: bold ;
+    font-size: 18px;
+  }

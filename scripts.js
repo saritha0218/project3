@@ -1,49 +1,63 @@
 let item = document.getElementById("input");
 let add = document.getElementById("list");
-  
-function add_item() {
 
-  if(item.value != ""){
+const saveItems = (items) => {
+   localStorage.setItem('todoItems', JSON.stringify(items));
+}
+
+const getItems = () => {
+   return JSON.parse(localStorage.getItem('todoItems')) || [];
+}
+
+const renderItems = () => {
+  add.innerHTML = '';
+
+  getItems().forEach((text, index) => {
     let make_li = document.createElement("li");
-    make_li.appendChild(document.createTextNode(item.value));
- 
+    make_li.appendChild(document.createTextNode(text));
+
     let editButton = document.createElement("button");
-        editButton.textContent = "Edit";
-        make_li.appendChild(editButton);
-        editButton.style.margin="0px 55px";
-        editButton.style.padding="10px";
-        editButton.style.borderRadius="8px"; 
-        editButton.style.backgroundColor="rgb(214, 136, 154)";
-        editButton.style.fontWeight="bold";
-        editButton.style.fontSize="18px";
+    editButton.textContent = "Edit";
+    editButton.classList.add("bt");
+    make_li.appendChild(editButton);
 
     let deleteButton = document.createElement("button");
-        deleteButton.textContent = "X";
-        make_li.appendChild(deleteButton);
-        deleteButton.style.padding="10px 20px";
-        deleteButton.style.borderRadius="8px";
-        deleteButton.style.backgroundColor="red";
-        deleteButton.style.fontWeight="bold";
-        deleteButton.style.fontSize="18px";
+    deleteButton.textContent = "X";
+    deleteButton.classList.add("bt1");
+    make_li.appendChild(deleteButton);
 
-     add.appendChild(make_li); 
-     item.value = "" 
+    add.appendChild(make_li);
 
-     editButton.onclick = function() {
-      let newValue = prompt("Edit the item:", make_li.firstChild.textContent);
+    editButton.onclick = function() {
+      let newValue = prompt("Edit the item:", text);
       if (newValue !== null && newValue.trim() !== "") {
-          make_li.firstChild.textContent = newValue;
+          let items = getItems();
+          items[index] = newValue;
+          saveItems(items);
+          renderItems();
       }
-    }
+    };
 
-     deleteButton.onclick = function(){
-    make_li.parentNode.removeChild(make_li);
-      }
-  }
-  else{
-      alert("plz add a value to item");
-  }
- }
+    deleteButton.onclick = function(){
+      let items = getItems();
+      items.splice(index, 1);
+      saveItems(items);
+      renderItems();
+    };
+  });
+};
 
- 
-    
+function add_item() {
+  if(item.value.trim() !== "") {
+    let items = getItems(); 
+    items.push(item.value.trim());
+    saveItems(items);
+    renderItems();
+    item.value = "";
+  }
+  else {
+    alert("Please add a value to item");
+  }
+}
+
+document.addEventListener('DOMContentLoaded', renderItems);
