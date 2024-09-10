@@ -9,12 +9,21 @@ const getItems = () => {
    return JSON.parse(localStorage.getItem('todoItems')) || [];
 }
 
-const renderItems = () => {
+const showItems = () => {
   add.innerHTML = '';
 
-  getItems().forEach((text, index) => {
+  getItems().forEach((item, index) => {
+
     let make_li = document.createElement("li");
-    make_li.appendChild(document.createTextNode(text));
+
+    let textSpan = document.createElement("span");
+    textSpan.textContent = item.text;
+
+    if (item.completed) {
+          textSpan.classList.add('completed'); 
+    }
+
+    make_li.appendChild(textSpan);
 
     let editButton = document.createElement("button");
     editButton.textContent = "Edit";
@@ -26,15 +35,20 @@ const renderItems = () => {
     deleteButton.classList.add("bt1");
     make_li.appendChild(deleteButton);
 
+    let completeButton = document.createElement("button");
+    completeButton.textContent = "Complete";
+    completeButton.classList.add("bt2");
+    make_li.appendChild(completeButton);
+
     add.appendChild(make_li);
 
     editButton.onclick = function() {
-      let newValue = prompt("Edit the item:", text);
-      if (newValue !== null && newValue.trim() !== "") {
+      let newValue = prompt("Edit the item:", item.text);
+      if (newValue.trim() !== "") {
           let items = getItems();
-          items[index] = newValue;
+          items[index].text = newValue;
           saveItems(items);
-          renderItems();
+          showItems();
       }
     };
 
@@ -42,17 +56,25 @@ const renderItems = () => {
       let items = getItems();
       items.splice(index, 1);
       saveItems(items);
-      renderItems();
+      showItems();
     };
+
+    completeButton.onclick = function(){
+      let items = getItems();
+            items[index].completed = !items[index].completed; 
+            saveItems(items);
+            showItems();
+    }
+
   });
 };
 
 function add_item() {
   if(item.value.trim() !== "") {
     let items = getItems(); 
-    items.push(item.value.trim());
+    items.push({ text: item.value.trim(), completed: false });
     saveItems(items);
-    renderItems();
+    showItems();
     item.value = "";
   }
   else {
@@ -60,4 +82,4 @@ function add_item() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', renderItems);
+document.addEventListener('DOMContentLoaded', showItems);

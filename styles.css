@@ -12,7 +12,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-position: center;
+    background-attachment: fixed;
   }
    
   h1{
@@ -77,3 +77,17 @@
     font-weight: bold ;
     font-size: 18px;
   }
+
+  .bt2{
+    background-color: rgb(20, 243, 35);
+    padding: 10px 20px ;
+    border-Radius: 8px ;
+    font-weight: bold ;
+    font-size: 18px;
+    margin-left: 50px ;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    color: grey;
+}
